@@ -1,3 +1,4 @@
+import { getResourse } from "../services/services";
 function cards() {
   class MenuCard {
     constructor(src, alt, title, desc, price, parentSelector, ...classes) {
@@ -37,13 +38,6 @@ function cards() {
       this.parent.append(element);
     }
   }
-  const getResourse = async (url) => {
-    const res = await fetch(url);
-    if (!res.ok) {
-      throw new Error(`Could not fetch ${utl} , status: ${res.status}`);
-    }
-    return await res.json();
-  };
 
   getResourse("http://localhost:3333/menu").then((data) => {
     data.forEach(({ img, altimg, title, descr, price }) => {
